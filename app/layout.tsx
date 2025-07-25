@@ -6,6 +6,7 @@ import { Providers } from '@/app/providers'
 const firaSans = Fira_Sans({
   variable: '--font-fira-sans',
   weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
 })
 
 export const metadata: Metadata = {
