@@ -21,9 +21,19 @@ export const searchAddressByText = async ({
     textQuery: address,
     region: 'us',
     fields: ['displayName', 'id', 'postalAddress'],
-    ...(userPosition && {
-      locationBias: { lat: userPosition.latitude, lng: userPosition.longitude },
-    }),
+
+    ...(userPosition
+      ? {
+          locationBias: { lat: userPosition.latitude, lng: userPosition.longitude },
+        }
+      : {
+          locationRestriction: {
+            north: 49.384358,
+            south: 24.396308,
+            west: -124.848974,
+            east: -66.93457,
+          },
+        }),
   })
 
   return places?.map((place) => ({
